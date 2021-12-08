@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "sample-abad6"
-  }
+    "default": "sample-abad6",
+    "dev": "sample-dev-dc666"
+  },
+  "targets": {}
 }
