@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello World new deploy np main.yml found in sunny
+          Hello World new deploy np main.yml added in sunny
         </p>
         <a
           className="App-link"
