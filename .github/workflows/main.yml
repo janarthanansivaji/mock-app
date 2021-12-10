@@ -4,8 +4,7 @@
 name: Deploy to Firebase Hosting on merge
 'on':
   release:
-    types: 
-      - created
+    types: [ published ]
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
