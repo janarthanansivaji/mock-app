@@ -3,13 +3,22 @@
 
 name: Deploy to Firebase Hosting on merge
 'on':
-  release:
-    types: [ published ]
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      tagInput:
+       required: true
+        description: provide tag
+       
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref:  '${{ github.event.inputs.tagInput }}'
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
