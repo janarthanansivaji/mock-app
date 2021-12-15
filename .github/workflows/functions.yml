@@ -38,7 +38,7 @@ jobs:
       - name: Use Project
         run: firebase use default
       - name: deploy
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only functions
           
 
 
