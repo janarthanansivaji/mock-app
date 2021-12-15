@@ -11,22 +11,31 @@ name: Deploy to Firebase Hosting on merge
       tagInput:
        required: true
        description: provide tag
-       
-jobs:
-  build_and_deploy:
+
+
+ jobs:
+  build:
+
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./functions
+
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-      - uses: actions/checkout@v2
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: '${{ secrets.TEMP_KEY}}'
-      - name: Cloud Functions Deploy
-      #  uses: google-github-actions/deploy-cloud-functions@v0.1.2
-        uses: google-github-actions/deploy-cloud-functions@v0
-        with:
-          name: helloWorld
-          runtime: 'nodejs12'
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: install libraries
+      run: npm install
+      working-directory: ${{env.working-directory}}
+    - name: install firebase
+      run: npm i firebase-tools -g  
+    - name: deploy
+      run: firebase deploy --token ${{ secrets.TEMP_KEY }}
           
 
 
