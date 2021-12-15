@@ -30,7 +30,9 @@ jobs:
         run: npm install
         working-directory: ${{env.working-directory}}
       - name: install firebase
-        run: npm i firebase-tools -g  
+        run: npm i firebase-tools -g 
+      - name: Use Project
+        run: firebase use default
       - name: deploy
         run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
           
