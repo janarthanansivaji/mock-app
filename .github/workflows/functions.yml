@@ -17,12 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref:  '${{ github.event.inputs.tagInput }}'
       - name: Cloud Functions Deploy
         uses: google-github-actions/deploy-cloud-functions@v0.1.2
         with:
           credentials: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SAMPLE_ABAD6 }}
+          project_id: sample-abad6
           name: helloWorld
           runtime: 'nodejs12'
           
