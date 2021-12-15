@@ -31,6 +31,10 @@ jobs:
         working-directory: ${{env.working-directory}}
       - name: install firebase
         run: npm i firebase-tools -g 
+      - name: 'firebase auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.TEMP_KEY}}'
       - name: Use Project
         run: firebase use default
       - name: deploy
