@@ -16,16 +16,14 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.TEMP_KEY}}'
-      - uses: actions/checkout@v2
       - name: Cloud Functions Deploy
         uses: google-github-actions/deploy-cloud-functions@v0.1.2
         with:
-          credentials: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SAMPLE_ABAD6 }}
-          project_id: sample-abad6
           name: helloWorld
           runtime: 'nodejs12'
           
