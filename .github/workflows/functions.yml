@@ -39,9 +39,3 @@ jobs:
         run: firebase use default
       - name: deploy
         run: firebase deploy --only functions
-          
-
-
-
-
-
